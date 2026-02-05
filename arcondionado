@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Manutenção de Ar-Condicionado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+    }
+
+    a.button {
+      display: block;
+      margin: 15px 0;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    .cliente {
+      background: #1e88e5;
+    }
+
+    .tecnico {
+      background: #43a047;
+    }
+
+    footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>📋 Manutenção de Ar-Condicionado</h1>
+    <p>Escaneie para acessar as informações do equipamento</p>
+
+    <!-- ÁREA DO CLIENTE -->
+    <a class="button cliente" href="LINK_DO_HISTORICO_CLIENTE" target="_blank">
+      👤 Área do Cliente
+    </a>
+
+    <!-- ÁREA DO TÉCNICO -->
+    <a class="button tecnico" href="LINK_DO_FORMULARIO_TECNICO" target="_blank">
+      🔧 Área do Técnico
+    </a>
+
+    <footer>
+      Sistema de manutenção via QR Code
+    </footer>
+  </div>
+
+</body>
+</html>
