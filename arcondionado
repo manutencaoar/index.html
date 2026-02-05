@@ -2,19 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Manutenção de Ar-Condicionado</title>
+  <title>Manutenção Ar-Condicionado</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f2f4f7;
-      margin: 0;
       padding: 20px;
       text-align: center;
     }
 
-    .card {
+    .box {
       background: #fff;
       padding: 20px;
       border-radius: 10px;
@@ -23,61 +22,108 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    h1 {
-      font-size: 22px;
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h2 {
       margin-bottom: 10px;
     }
 
-    p {
-      color: #555;
-    }
-
-    a.button {
-      display: block;
-      margin: 15px 0;
-      padding: 15px;
-      text-decoration: none;
-      font-size: 16px;
-      border-radius: 8px;
-      color: white;
-    }
-
-    .cliente {
-      background: #1e88e5;
-    }
-
-    .tecnico {
-      background: #43a047;
-    }
-
-    footer {
-      margin-top: 15px;
-      font-size: 12px;
-      color: #777;
+    .logout {
+      background: #c62828;
+      margin-top: 20px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>📋 Manutenção de Ar-Condicionado</h1>
-    <p>Escaneie para acessar as informações do equipamento</p>
+<!-- LOGIN -->
+<div class="box" id="loginBox">
+  <h2>🔐 Acesso ao Sistema</h2>
 
-    <!-- ÁREA DO CLIENTE -->
-    <a class="button cliente" href="LINK_DO_HISTORICO_CLIENTE" target="_blank">
-      👤 Área do Cliente
-    </a>
+  <select id="tipo">
+    <option value="cliente">Cliente</option>
+    <option value="tecnico">Técnico</option>
+  </select>
 
-    <!-- ÁREA DO TÉCNICO -->
-    <a class="button tecnico" href="LINK_DO_FORMULARIO_TECNICO" target="_blank">
-      🔧 Área do Técnico
-    </a>
+  <input type="text" id="usuario" placeholder="Usuário">
+  <input type="password" id="senha" placeholder="Senha">
 
-    <footer>
-      Sistema de manutenção via QR Code
-    </footer>
-  </div>
+  <button onclick="login()">Entrar</button>
+</div>
+
+<!-- ÁREA CLIENTE -->
+<div class="box hidden" id="clienteBox">
+  <h2>👤 Área do Cliente</h2>
+  <p>Última manutenção: 10/01/2026</p>
+  <p>Próxima manutenção: 10/07/2026</p>
+  <p>Status do equipamento: OK</p>
+
+  <button class="logout" onclick="logout()">Sair</button>
+</div>
+
+<!-- ÁREA TÉCNICO -->
+<div class="box hidden" id="tecnicoBox">
+  <h2>🔧 Área do Técnico</h2>
+
+  <p>Registrar manutenção:</p>
+  <a href="LINK_DO_GOOGLE_FORMS" target="_blank">
+    Abrir formulário de manutenção
+  </a>
+
+  <br><br>
+
+  <a href="LINK_DO_HISTORICO_PLANILHA" target="_blank">
+    Ver histórico completo
+  </a>
+
+  <button class="logout" onclick="logout()">Sair</button>
+</div>
+
+<script>
+  // USUÁRIOS E SENHAS (edite aqui)
+  const users = {
+    cliente: { usuario: "cliente", senha: "1234" },
+    tecnico: { usuario: "tecnico", senha: "211710" }
+  };
+
+  function login() {
+    const tipo = document.getElementById("tipo").value;
+    const usuario = document.getElementById("usuario").value;
+    const senha = document.getElementById("senha").value;
+
+    if (
+      usuario === users[tipo].usuario &&
+      senha === users[tipo].senha
+    ) {
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById(tipo + "Box").classList.remove("hidden");
+    } else {
+      alert("Usuário ou senha incorretos");
+    }
+  }
+
+  function logout() {
+    location.reload();
+  }
+</script>
 
 </body>
 </html>
